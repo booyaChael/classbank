@@ -17,10 +17,10 @@ const StyledExitButton = styled(ExitButton)`
   right: 0;
 `;
 
-const BottomModal = () => {
+const BottomModal = ({ handleModalExit }) => {
   return (
     <Wrapper>
-      <StyledExitButton />
+      <StyledExitButton handleModalExit={handleModalExit} />
     </Wrapper>
   );
 };

@@ -16,7 +16,11 @@ const Form = styled.form`
 `;
 
 const MakeClassPage = () => {
-  const { showClassConfirmModal, setShowClassConfirmModal } = useState(false);
+  const [showClassConfirmModal, setShowClassConfirmModal] = useState(false);
+
+  const handleModalExit = () => {
+    setShowClassConfirmModal(false);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -51,7 +55,9 @@ const MakeClassPage = () => {
           marginTop={"20px"}
         />
       </Form>
-      {showClassConfirmModal ? <BottomModal /> : null}
+      {showClassConfirmModal ? (
+        <BottomModal handleModalExit={handleModalExit} />
+      ) : null}
     </Wrapper>
   );
 };
