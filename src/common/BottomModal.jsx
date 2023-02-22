@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import ExitButton from "./ExitButton.jsx";
-
+import BottomModalContent from "./BottomModalContent.jsx";
 const Wrapper = styled.div`
   position: absolute;
   width: 100%;
@@ -17,10 +17,11 @@ const StyledExitButton = styled(ExitButton)`
   right: 0;
 `;
 
-const BottomModal = ({ handleModalExit }) => {
+const BottomModal = ({ handleModalExit, modalContent }) => {
   return (
     <Wrapper>
       <StyledExitButton handleModalExit={handleModalExit} />
+      <BottomModalContent modalContent={modalContent} />
     </Wrapper>
   );
 };

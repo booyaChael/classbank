@@ -8,6 +8,8 @@ import {
   EnterClassCodePage,
   StudentJoinPage,
   MakeClassPage,
+  MyClassesPage,
+  MyClassPage,
 } from "./pages";
 
 function App() {
@@ -22,6 +24,8 @@ function App() {
           <Route path="select-type" element={<SelectTypePage />} />
           <Route path="teacher-join" element={<TeacherJoinPage />} />
           <Route path="make-class" element={<MakeClassPage />} />
+          <Route path="my-class" element={<MyClassPage />} />
+          <Route path="my-classes-list" element={<MyClassesPage />} />
         </Routes>
       </Router>
     </>

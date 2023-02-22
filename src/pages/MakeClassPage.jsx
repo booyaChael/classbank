@@ -3,6 +3,7 @@ import { PageHeader, BottomModal } from "../common";
 import styled from "styled-components";
 import { layout } from "../styled/theme";
 import { InputBox, BottomButton } from "../common";
+import ClassConfirmModalContent from "../components/makeClass/ClassConfirmModalContent";
 
 const Wrapper = styled.div`
   ${layout.flexCenter};
@@ -56,7 +57,10 @@ const MakeClassPage = () => {
         />
       </Form>
       {showClassConfirmModal ? (
-        <BottomModal handleModalExit={handleModalExit} />
+        <BottomModal
+          handleModalExit={handleModalExit}
+          modalContent={ClassConfirmModalContent}
+        />
       ) : null}
     </Wrapper>
   );
