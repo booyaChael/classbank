@@ -1,7 +1,25 @@
 import styled from "styled-components";
+const Input = styled.input.attrs({
+  type: "string",
+  placeholder: "내용을 입력하세요 (20자 이내)",
+})`
+  width: 70%;
+  height: 40px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 35px;
+  line-height: 16px;
+  &:focus {
+    outline: none;
+  }
+`;
 
-const Wrapper = styled.div``;
 const InputContentSpecificContent = () => {
-  return <Wrapper>InputContentSpecificContent</Wrapper>;
+  return (
+    <>
+      <Input maxLength={20} />
+    </>
+  );
 };
 export default InputContentSpecificContent;

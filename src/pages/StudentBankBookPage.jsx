@@ -2,7 +2,7 @@ import { PageHeader, HistoryBox, AddButton, BottomModal } from "../common";
 import TotalMoneyBox from "../components/bankBook/TotalMoneyBox";
 import { layout } from "../styled/theme";
 import styled from "styled-components";
-import HandleMoneyModalContent from "../components/bankBook/HandleMoneyModalContent";
+import ModalContent from "../components/bankBook/ModalContent";
 import { useState } from "react";
 
 const Wrapper = styled.div`
@@ -11,12 +11,11 @@ const Wrapper = styled.div`
 `;
 
 const StudentBankBookPage = () => {
-  const [showModal, setShowModal] = useState(true);
+  const [showModal, setShowModal] = useState(false);
   const handleModalExit = () => {
     setShowModal(false);
   };
   const handleAddBtnClick = () => {
-    console.log("clicked");
     setShowModal(true);
   };
   return (
@@ -29,7 +28,8 @@ const StudentBankBookPage = () => {
       {showModal ? (
         <BottomModal
           handleModalExit={handleModalExit}
-          ModalContent={HandleMoneyModalContent}
+          ModalContent={ModalContent}
+          modalHeight={"55%"}
         />
       ) : null}
     </Wrapper>

@@ -3,7 +3,7 @@ import ExitButton from "./ExitButton.jsx";
 const Wrapper = styled.div`
   position: absolute;
   width: 100%;
-  height: 72%;
+  height: ${(props) => props.modalHeight};
   bottom: 0;
 
   background: #ffffff;
@@ -16,9 +16,9 @@ const StyledExitButton = styled(ExitButton)`
   right: 0;
 `;
 
-const BottomModal = ({ handleModalExit, ModalContent }) => {
+const BottomModal = ({ handleModalExit, ModalContent, modalHeight }) => {
   return (
-    <Wrapper>
+    <Wrapper modalHeight={modalHeight}>
       <StyledExitButton handleModalExit={handleModalExit} />
       <ModalContent />
     </Wrapper>

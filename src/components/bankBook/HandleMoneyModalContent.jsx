@@ -5,6 +5,8 @@ import InputContentPlusMinus from "./InputContentPlusMinus";
 import InputContentTax from "./InputContentTax";
 import InputContentSpecificContent from "./InputContentSpecificContent";
 import Owner from "./Owner";
+import BottomButton from "../../common/BottomButton";
+import { layout } from "../../styled/theme";
 const TitleWrapper = styled.span`
   display: flex;
   align-items: center;
@@ -20,7 +22,10 @@ const Title = styled.span`
   letter-spacing: 0.1em;
   color: #000000;
 `;
-const HandleMoneyModalContent = () => {
+const BottomButtonWrapper = styled.div`
+  ${layout.flexCenter};
+`;
+const HandleMoneyModalContent = ({ goToConfirm }) => {
   return (
     <>
       <TitleWrapper>
@@ -34,6 +39,15 @@ const HandleMoneyModalContent = () => {
         category={"내용"}
         content={<InputContentSpecificContent />}
       />
+      <BottomButtonWrapper>
+        <BottomButton
+          backgroundColor={"#000000"}
+          text={"저장"}
+          textColor={"#ffffff"}
+          marginTop={"50px"}
+          onClick={goToConfirm}
+        />
+      </BottomButtonWrapper>
     </>
   );
 };

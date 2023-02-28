@@ -10,7 +10,7 @@ const AddBtnImg = styled.img.attrs({
   right: 40px;
 `;
 
-const AddButton = () => {
-  return <AddBtnImg />;
+const AddButton = ({ handleAddBtnClick }) => {
+  return <AddBtnImg onClick={handleAddBtnClick} />;
 };
 export default AddButton;

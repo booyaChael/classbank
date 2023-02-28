@@ -17,7 +17,7 @@ const StyledText = styled.span`
   font-family: "Inter";
   font-style: normal;
   font-weight: 600;
-  font-size: 35px;
+  font-size: 40px;
   line-height: 42px;
   letter-spacing: 0.1em;
 
