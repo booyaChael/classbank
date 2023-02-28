@@ -1,15 +1,13 @@
 import axios from "axios";
 
 const useUserRegister = () => {
-  const login = async (loginInput) => {
+  const teacherJoin = async (loginInput) => {
     axios
-      .post(`http://43.201.34.166/v1/userRegister`, loginInput, {
-        withCredentials: true,
-      })
+      .post(`http://43.201.34.166:50709/v1/userRegister`, loginInput)
       .then((res) => console.log(res));
   };
 
-  return { login };
+  return { teacherJoin };
 };
 
 export default useUserRegister;

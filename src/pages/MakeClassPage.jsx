@@ -59,7 +59,7 @@ const MakeClassPage = () => {
       {showClassConfirmModal ? (
         <BottomModal
           handleModalExit={handleModalExit}
-          modalContent={ClassConfirmModalContent}
+          ModalContent={ClassConfirmModalContent}
         />
       ) : null}
     </Wrapper>

@@ -1,9 +1,9 @@
 import styled from "styled-components";
-const Wrapper = styled.div`
+const Wrapper = styled.span`
   display: flex;
   justify-content: flex-end;
 `;
-const Button = styled.div`
+const Button = styled.span`
   padding: 35px;
 `;
 

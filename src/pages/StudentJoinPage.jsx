@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { layout } from "../styled/theme";
 import { InputBox, BottomButton, PageHeader } from "../common";
-import { useUserRegister } from "../hooks";
 
 const Logo = styled.div`
   ${layout.flexCenter};
@@ -35,7 +34,6 @@ const ErrorText = styled.span`
 `;
 
 const StudentJoinPage = () => {
-  const { login } = useUserRegister();
   const [joinInputForm, setJoinInputForm] = useState({
     user_attendanceNumber: 1,
     user_name: "",
@@ -64,7 +62,6 @@ const StudentJoinPage = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(joinInputForm);
-    login(joinInputForm);
   };
   return (
     <>

@@ -5,4 +5,6 @@ export { default as StudentJoinPage } from "./StudentJoinPage";
 export { default as MakeClassPage } from "./MakeClassPage";
 export { default as EnterClassCodePage } from "./EnterClassCodePage";
 export { default as MyClassesPage } from "./MyClassesPage";
+export { default as MyStudentPage } from "./MyStudentPage";
 export { default as MyClassPage } from "./MyClassPage";
+export { default as StudentBankBookPage } from "./StudentBankBookPage";

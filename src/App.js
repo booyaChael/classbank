@@ -1,6 +1,6 @@
 import React from "react";
+import GlobalStyles from "./GlobalStyle";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Reset } from "styled-reset";
 import {
   SelectTypePage,
   LoginPage,
@@ -10,13 +10,15 @@ import {
   MakeClassPage,
   MyClassesPage,
   MyClassPage,
+  MyStudentPage,
+  StudentBankBookPage,
 } from "./pages";
 
 function App() {
   return (
     <>
       <Router>
-        <Reset />
+        <GlobalStyles />
         <Routes>
           <Route path="student-join" element={<StudentJoinPage />} />
           <Route path="class-code" element={<EnterClassCodePage />} />
@@ -25,7 +27,9 @@ function App() {
           <Route path="teacher-join" element={<TeacherJoinPage />} />
           <Route path="make-class" element={<MakeClassPage />} />
           <Route path="my-class" element={<MyClassPage />} />
+          <Route path="my-student" element={<MyStudentPage />} />
           <Route path="my-classes-list" element={<MyClassesPage />} />
+          <Route path="bank-book" element={<StudentBankBookPage />} />
         </Routes>
       </Router>
     </>

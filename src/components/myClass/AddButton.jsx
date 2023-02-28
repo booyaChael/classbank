@@ -6,24 +6,26 @@ const Wrapper = styled.span`
 `;
 
 const PlusImg = styled.img.attrs({
-  src: "../images/grayplus.png",
+  src: "../images/plus.png",
 })`
   width: 30px;
   height: 30px;
+  padding: 7px;
 `;
 
 const AddText = styled.span`
   font-family: "Inter";
   font-style: normal;
-  font-weight: 300;
-  font-size: 20px;
+  font-weight: 500;
+  font-size: 30px;
   line-height: 16px;
   color: rgba(0, 0, 0, 0.7);
+  padding: 7px;
 `;
 
-const AddButton = () => {
+const AddButton = ({ handleAddBtnClick }) => {
   return (
-    <Wrapper>
+    <Wrapper onClick={handleAddBtnClick}>
       <PlusImg />
       <AddText>추가</AddText>
     </Wrapper>
