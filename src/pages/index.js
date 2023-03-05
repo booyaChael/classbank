@@ -8,3 +8,5 @@ export { default as MyClassesPage } from "./MyClassesPage";
 export { default as MyStudentPage } from "./MyStudentPage";
 export { default as MyClassPage } from "./MyClassPage";
 export { default as StudentBankBookPage } from "./StudentBankBookPage";
+export { default as JoinErrorPage } from "./JoinErrorPage";
+export { default as ClassCodeErrorPage } from "./ClassCodeErrorPage";

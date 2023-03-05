@@ -7,7 +7,7 @@ import { InputBox, BottomButton, PageHeader } from "../common";
 const Logo = styled.div`
   ${layout.flexCenter};
   flex-direction: column;
-  margin-top: 30%;
+  margin-top: 10%;
   margin-bottom: 11px;
 `;
 const LogoText = styled.span`
@@ -35,7 +35,7 @@ const ErrorText = styled.span`
 `;
 
 const JoinPage = () => {
-  const { teacherJoin } = useUserRegister();
+  const { join } = useUserRegister();
   const [joinInputForm, setJoinInputForm] = useState({
     user_attendanceNumber: "0",
     user_name: "",
@@ -61,7 +61,7 @@ const JoinPage = () => {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    teacherJoin(joinInputForm);
+    join(joinInputForm);
   };
   return (
     <>
@@ -88,12 +88,14 @@ const JoinPage = () => {
           text={"비밀번호"}
           type={"password"}
           handleInputChange={handleInputChange}
+          autoComplete="off"
         />
         <InputBox
-          inputName={"passwordAgain"}
+          inputName={"password_again"}
           text={"비밀번호 재입력"}
           type={"password"}
           handleInputChange={handlePasswordConfirm}
+          autoComplete="off"
         />
         <BottomButton type="submit" text={"회원가입"} marginTop={"20px"} />
         <ErrorText>{errorText}</ErrorText>

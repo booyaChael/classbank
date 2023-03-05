@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { layout } from "../styled/theme";
 import { InputBox, BottomButton, PageHeader } from "../common";
-
+import { useUserRegister, useJoinStudent } from "../hooks";
+import { useRecoilValue } from "recoil";
+import { studentJoinClassCode } from "../store";
 const Logo = styled.div`
   ${layout.flexCenter};
   flex-direction: column;
@@ -34,6 +36,9 @@ const ErrorText = styled.span`
 `;
 
 const StudentJoinPage = () => {
+  const { join } = useUserRegister();
+  const { joinStudent } = useJoinStudent();
+  const studentClassCode = useRecoilValue(studentJoinClassCode);
   const [joinInputForm, setJoinInputForm] = useState({
     user_attendanceNumber: 1,
     user_name: "",
@@ -59,9 +64,11 @@ const StudentJoinPage = () => {
       setErrorText("");
     }
   };
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(joinInputForm);
+    const studentIdx = await join(joinInputForm);
+    await joinStudent(studentIdx, studentClassCode);
+    console.log("join completed");
   };
   return (
     <>

@@ -2,6 +2,8 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { layout } from "../../styled/theme";
 import { BottomButton } from "../../common";
+import { useRecoilValue } from "recoil";
+import { classData } from "../../store";
 
 const ContentWrapper = styled.div`
   ${layout.flexCenter};
@@ -57,19 +59,19 @@ const GuideText = styled.div`
 `;
 
 const ClassConfirmModalContent = () => {
+  const classDataRecoil = useRecoilValue(classData);
+  const { class_name, class_code } = classDataRecoil;
   const navigate = useNavigate();
-  const className = "5학년 2반";
-  const classCodeNumber = "17798";
   const handleClick = () => {
-    navigate("/my-classes-list");
+    navigate("/my-class");
   };
   return (
     <>
       <ContentWrapper>
-        <MadeClassText>{className} 클래스가 생성되었습니다</MadeClassText>
+        <MadeClassText>{class_name} 클래스가 생성되었습니다</MadeClassText>
         <>
           <ClassCodeText>클래스코드:</ClassCodeText>
-          <ClassCodeNumber>{classCodeNumber}</ClassCodeNumber>
+          <ClassCodeNumber>{class_code}</ClassCodeNumber>
         </>
         <GuideText>
           해당 클래스의 설정 탭에서 클래스코드를 다시 확인하실 수 있습니다

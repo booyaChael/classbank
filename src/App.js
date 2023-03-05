@@ -12,6 +12,8 @@ import {
   MyClassPage,
   MyStudentPage,
   StudentBankBookPage,
+  JoinErrorPage,
+  ClassCodeErrorPage,
 } from "./pages";
 
 function App() {
@@ -20,9 +22,12 @@ function App() {
       <Router>
         <GlobalStyles />
         <Routes>
+          <Route path="/" element={<LoginPage />} />
+          <Route path="/join-error" element={<JoinErrorPage />} />
           <Route path="student-join" element={<StudentJoinPage />} />
           <Route path="class-code" element={<EnterClassCodePage />} />
-          <Route path="login" element={<LoginPage />} />
+          <Route path="classcode-error" element={<ClassCodeErrorPage />} />
+
           <Route path="select-type" element={<SelectTypePage />} />
           <Route path="teacher-join" element={<TeacherJoinPage />} />
           <Route path="make-class" element={<MakeClassPage />} />

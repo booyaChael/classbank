@@ -23,10 +23,15 @@ const Unit = styled.span`
   font-size: 35px;
   line-height: 16px;
 `;
-const InputContentMoney = () => {
+const InputContentMoney = ({ handleInputChange }) => {
   return (
     <>
-      <Input type="number" placeholder="0" />
+      <Input
+        type="number"
+        placeholder="0"
+        onChange={handleInputChange}
+        name={"amount"}
+      />
       <Unit>미소</Unit>
     </>
   );
