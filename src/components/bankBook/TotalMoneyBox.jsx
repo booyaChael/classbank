@@ -1,7 +1,5 @@
 import styled from "styled-components";
 import { layout } from "../../styled/theme";
-import { useRecoilValue } from "recoil";
-import { user } from "../../store";
 
 const Wrapper = styled.div`
   width: 90%;
@@ -47,9 +45,8 @@ const TotalMoney = styled.span`
 
   color: #000000;
 `;
-const TotalMoneyBox = () => {
-  const userData = useRecoilValue(user);
-  const { user_name, account_amount } = userData;
+const TotalMoneyBox = ({ user }) => {
+  const { user_name, account_amount } = user;
   return (
     <Wrapper>
       <NameWrapper>

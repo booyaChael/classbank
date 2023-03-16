@@ -53,7 +53,6 @@ const MakeClassPage = () => {
     const classInfo = await getClassInfo(classId);
     console.log(classInfo);
     setClassDataRecoil(classInfo);
-    console.log(classDataRecoil);
     setShowClassConfirmModal(true);
   };
 

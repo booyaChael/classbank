@@ -15,10 +15,10 @@ const Input = styled.input.attrs({
   }
 `;
 
-const InputContentSpecificContent = () => {
+const InputContentSpecificContent = ({ handleInputChange }) => {
   return (
     <>
-      <Input maxLength={20} />
+      <Input maxLength={20} onChange={handleInputChange} name={"detail"} />
     </>
   );
 };

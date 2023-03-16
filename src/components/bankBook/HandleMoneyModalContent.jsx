@@ -4,10 +4,15 @@ import InputContentMoney from "./InputContentMoney";
 import InputContentPlusMinus from "./InputContentPlusMinus";
 import InputContentTax from "./InputContentTax";
 import InputContentSpecificContent from "./InputContentSpecificContent";
+import InputContentCategory from "./InputContentCategory";
 import Owner from "./Owner";
 import BottomButton from "../../common/BottomButton";
 import { layout } from "../../styled/theme";
-import { useState } from "react";
+import { useState, useCallback, useEffect } from "react";
+import { useRecoilValue } from "recoil";
+import { user } from "../../store";
+import { useParams } from "react-router-dom";
+
 const TitleWrapper = styled.span`
   display: flex;
   align-items: center;
@@ -26,34 +31,55 @@ const Title = styled.span`
 const BottomButtonWrapper = styled.div`
   ${layout.flexCenter};
 `;
-const HandleMoneyModalContent = ({ goToConfirm }) => {
+const HandleMoneyModalContent = ({ goToConfirm, userName }) => {
+  const { idx } = useParams();
+  const myData = useRecoilValue(user);
+
   const [handleMoneyForm, setHandleMoneyForm] = useState({
-    idx: "",
-    class_id: "",
-    category: "",
+    idx,
+    tax: 0,
+    class_id: myData.class_id,
     detail: "",
     amount: null,
-    worker_idx: "",
-    worker_name: "",
-    worker_attendanceNumber: "",
+    isPlus: 1,
+    worker_idx: myData.idx,
+    category: "월급",
   });
-  const handleInputChange = (event) => {
+  const handleInputChange = async (event) => {
     const { name, value } = event.target;
     setHandleMoneyForm({
       ...handleMoneyForm,
       [name]: value,
     });
-    console.log(handleMoneyForm);
   };
-  const handleCategoryChange = (categoryState) => {
-    setHandleMoneyForm({
+  const handleTypeChange = useCallback((typeState) => {
+    setHandleMoneyForm((prevState) => ({
+      ...prevState,
+      isPlus: typeState,
+    }));
+    //eslint-disable-next-line
+  }, []);
+
+  const handleCategoryChange = useCallback((categoryState) => {
+    setHandleMoneyForm((prevState) => ({
+      ...prevState,
       category: categoryState,
-    });
-  };
+    }));
+    //eslint-disable-next-line
+  }, []);
+
+  useEffect(() => {
+    console.log(handleMoneyForm);
+  }, [handleMoneyForm]);
+
+  if (Object.keys(myData).length === 0) {
+    // Render a loading state or a placeholder component until user data is fetched
+    return <div>Loading...</div>;
+  }
   return (
     <>
       <TitleWrapper>
-        <Owner />
+        <Owner userName={userName} />
         <Title>의 통장</Title>
       </TitleWrapper>
       <ModalInputBox
@@ -61,15 +87,20 @@ const HandleMoneyModalContent = ({ goToConfirm }) => {
         content={<InputContentMoney handleInputChange={handleInputChange} />}
       />
       <ModalInputBox
-        category={"분류"}
-        content={
-          <InputContentPlusMinus handleInputChange={handleCategoryChange} />
-        }
-      />
-      <ModalInputBox
         category={"세금"}
         content={<InputContentTax handleInputChange={handleInputChange} />}
       />
+      <ModalInputBox
+        category={"타입"}
+        content={<InputContentPlusMinus handleTypeChange={handleTypeChange} />}
+      />
+      <ModalInputBox
+        category={"항목"}
+        content={
+          <InputContentCategory handleCategoryChange={handleCategoryChange} />
+        }
+      />
+
       <ModalInputBox
         category={"내용"}
         content={
@@ -82,7 +113,7 @@ const HandleMoneyModalContent = ({ goToConfirm }) => {
           text={"저장"}
           textColor={"#ffffff"}
           marginTop={"50px"}
-          onClick={goToConfirm}
+          onClick={() => goToConfirm(handleMoneyForm)}
         />
       </BottomButtonWrapper>
     </>

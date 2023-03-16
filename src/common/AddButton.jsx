@@ -3,11 +3,11 @@ import styled from "styled-components";
 const AddBtnImg = styled.img.attrs({
   src: "../images/addBtn.png",
 })`
-  width: 170px;
-  height: 170px;
+  width: 150px;
+  height: 150px;
   position: absolute;
-  bottom: 40px;
-  right: 40px;
+  top: 270px;
+  right: 50px;
 `;
 
 const AddButton = ({ handleAddBtnClick }) => {

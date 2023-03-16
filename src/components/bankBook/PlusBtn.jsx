@@ -38,11 +38,11 @@ const PlusImgWhite = styled.img.attrs({
 const PlusBtn = ({ plusOrMinus, handlePlusClick }) => {
   return (
     <Wrapper
-      onClick={handlePlusClick}
-      backgroundColor={plusOrMinus === "plus" ? "#000000" : "#ffffff"}
+      onClick={() => handlePlusClick()}
+      backgroundColor={plusOrMinus === 1 ? "#000000" : "#ffffff"}
     >
-      {plusOrMinus === "plus" ? <PlusImgWhite /> : <PlusImgGray />}
-      <Text color={plusOrMinus === "plus" ? "#ffffff" : "#b4b4b4"}>수입</Text>
+      {plusOrMinus === 1 ? <PlusImgWhite /> : <PlusImgGray />}
+      <Text color={plusOrMinus === 1 ? "#ffffff" : "#b4b4b4"}>수입</Text>
     </Wrapper>
   );
 };

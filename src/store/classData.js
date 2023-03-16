@@ -11,5 +11,6 @@ export const classData = atom({
     idx: null,
     monetary_unit: "",
     school_name: "",
+    student_list: [],
   },
 });

@@ -1,8 +1,5 @@
 import styled from "styled-components";
 import { layout } from "../../styled/theme";
-import { useRecoilValue } from "recoil";
-import { user } from "../../store";
-
 const Wrapper = styled.div`
   width: 220px;
   height: 75px;
@@ -27,13 +24,11 @@ const Name = styled.span`
   margin: 6px;
   color: #000000;
 `;
-const Owner = () => {
-  const userData = useRecoilValue(user);
-  const { user_name } = userData;
+const Owner = ({ userName }) => {
   return (
     <Wrapper>
       <Logo />
-      <Name>{user_name}</Name>
+      <Name>{userName}</Name>
     </Wrapper>
   );
 };

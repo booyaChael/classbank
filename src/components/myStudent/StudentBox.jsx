@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { layout } from "../../styled/theme";
+import { useNavigate } from "react-router-dom";
 
 const Wrapper = styled.div`
   display: flex;
@@ -53,15 +54,22 @@ const NextImg = styled.img.attrs({
   width: 25px;
   height: 25px;
 `;
-const StudentBox = () => {
+const StudentBox = ({ name, attendanceNumber, amount, unit, idx }) => {
+  const navigate = useNavigate();
+  const goToBankBook = () => {
+    navigate(`/bank-book/${idx}`);
+  };
   return (
-    <Wrapper>
+    <Wrapper onClick={goToBankBook}>
       <StudentInfo>
-        <Number>1</Number>
-        <Name>김은행</Name>
+        <Number>{attendanceNumber}</Number>
+        <Name>{name}</Name>
       </StudentInfo>
       <MoneyInfo>
-        <Money>200미소</Money>
+        <Money>
+          {amount}
+          {unit}
+        </Money>
         <NextImg />
       </MoneyInfo>
     </Wrapper>

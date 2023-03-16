@@ -53,6 +53,7 @@ const LoginPage = () => {
   };
 
   const handleUserType = (userInfo) => {
+    console.log(userInfo);
     if (userInfo.user_type === "teacher") {
       if (userInfo.class_id === null) {
         navigate("/make-class");
@@ -63,7 +64,7 @@ const LoginPage = () => {
       if (userInfo.full_view_authority) {
         navigate("/my-class");
       } else {
-        navigate("/bank-book");
+        navigate(`/bank-book/${userInfo.idx}`);
       }
     }
   };
@@ -72,7 +73,7 @@ const LoginPage = () => {
     console.log(userData);
     const userIdx = await login(loginInputForm);
     const userInfo = await getUserInfo(userIdx);
-    console.log(userInfo);
+    localStorage.setItem("loginToken", userIdx);
     setUserData(userInfo);
     handleUserType(userInfo);
   };

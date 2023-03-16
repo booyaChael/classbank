@@ -6,28 +6,24 @@ import MinusBtn from "./MinusBtn";
 const Wrapper = styled.div`
   display: flex;
 `;
-const InputContentPlusMinus = ({ handleCategoryChange }) => {
-  const [count, setCount] = useState(0);
-  const [plusOrMinus, setPlusOrMinus] = useState("minus");
+const InputContentPlusMinus = ({ handleTypeChange }) => {
+  const [plusOrMinus, setPlusOrMinus] = useState(1);
   const handlePlusClick = () => {
-    setPlusOrMinus("plus");
-    setCount(count + 1);
+    setPlusOrMinus(1);
   };
   const handleMinusClick = () => {
-    setPlusOrMinus("minus");
-    setCount(count + 1);
+    setPlusOrMinus(0);
   };
 
   useEffect(() => {
-    handleCategoryChange(plusOrMinus);
-    console.log(plusOrMinus);
-  }, [count,]);
+    handleTypeChange(plusOrMinus);
+  }, [plusOrMinus, handleTypeChange]);
   return (
-    <Wrapper name={"category"}>
+    <Wrapper name={"type"}>
       <PlusBtn
         plusOrMinus={plusOrMinus}
         handlePlusClick={handlePlusClick}
-        backgroundColor={plusOrMinus === "plus" ? "#000000" : "#ffffff"}
+        backgroundColor={plusOrMinus === 1 ? "#000000" : "#ffffff"}
       />
       <MinusBtn plusOrMinus={plusOrMinus} handleMinusClick={handleMinusClick} />
     </Wrapper>

@@ -5,3 +5,5 @@ export { default as useJoinStudent } from "./useJoinStudent";
 export { default as useGetUserInfo } from "./useGetUserInfo";
 export { default as useMakeClass } from "./useMakeClass";
 export { default as useGetClassInfo } from "./useGetClassInfo";
+export { default as useTransfer } from "./useTransfer";
+export { default as useGetHistory } from "./useGetHistory";

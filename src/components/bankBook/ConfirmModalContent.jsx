@@ -2,6 +2,9 @@ import styled from "styled-components";
 import Owner from "./Owner";
 import YesNoButton from "./YesNoButton";
 import { layout } from "../../styled/theme";
+import { useRecoilValue, useResetRecoilState } from "recoil";
+import { transfer } from "../../store";
+import { useTransfer } from "../../hooks";
 
 const TitleWrapper = styled.span`
   display: flex;
@@ -60,20 +63,29 @@ const PlusImg = styled.img.attrs({
   height: 90px;
   margin-right: 30px;
 `;
-const ConfirmModalContent = ({ type, goBackToHandleMoney }) => {
-  const handleYesClicked = () => {
-    console.log("yes");
+const ConfirmModalContent = ({
+  goBackToHandleMoney,
+  userName,
+  setShowModal,
+}) => {
+  const transferDataRecoil = useRecoilValue(transfer);
+  const resetTransferData = useResetRecoilState(transfer);
+  const { transferMoneyWithTax } = useTransfer();
+  const handleYesClicked = async () => {
+    await transferMoneyWithTax(transferDataRecoil);
+    resetTransferData();
+    setShowModal(false);
   };
   return (
     <>
       <TitleWrapper>
-        <Owner />
+        <Owner userName={userName} />
         <Title>의 통장</Title>
       </TitleWrapper>
       <Content>
         <InputContent>
           <PlusImg />
-          <Money>300미소</Money>
+          <Money>{transferDataRecoil.amount}미소</Money>
         </InputContent>
 
         <Text>입력하시겠습니까?</Text>

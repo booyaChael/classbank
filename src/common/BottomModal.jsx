@@ -16,11 +16,17 @@ const StyledExitButton = styled(ExitButton)`
   right: 0;
 `;
 
-const BottomModal = ({ handleModalExit, ModalContent, modalHeight }) => {
+const BottomModal = ({
+  handleModalExit,
+  ModalContent,
+  modalHeight,
+  userName,
+  setShowModal,
+}) => {
   return (
     <Wrapper modalHeight={modalHeight}>
       <StyledExitButton handleModalExit={handleModalExit} />
-      <ModalContent />
+      <ModalContent userName={userName} setShowModal={setShowModal} />
     </Wrapper>
   );
 };

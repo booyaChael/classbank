@@ -1,11 +1,21 @@
 import HandleMoneyModalContent from "./HandleMoneyModalContent";
 import ConfirmModalContent from "./ConfirmModalContent";
 import { useState } from "react";
+import { useRecoilState } from "recoil";
+import { transfer } from "../../store";
 
-const ModalContent = () => {
+const ModalContent = ({ userName, setShowModal }) => {
+  const [transferData, setTransferData] = useRecoilState(transfer);
   const [confirm, setConfirm] = useState(false);
-  const goToConfirm = () => {
-    setConfirm(true);
+  const goToConfirm = async (handleMoneyForm) => {
+    try {
+      console.log(handleMoneyForm);
+      setTransferData(handleMoneyForm);
+      console.log(transferData);
+      setConfirm(true);
+    } catch (error) {
+      return error;
+    }
   };
 
   const goBackToHandleMoney = () => {
@@ -17,9 +27,14 @@ const ModalContent = () => {
         <ConfirmModalContent
           type="plus"
           goBackToHandleMoney={goBackToHandleMoney}
+          userName={userName}
+          setShowModal={setShowModal}
         />
       ) : (
-        <HandleMoneyModalContent goToConfirm={goToConfirm} />
+        <HandleMoneyModalContent
+          goToConfirm={goToConfirm}
+          userName={userName}
+        />
       )}
     </>
   );

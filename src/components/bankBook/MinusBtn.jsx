@@ -37,11 +37,11 @@ const MinusImgWhite = styled.img.attrs({
 const MinusBtn = ({ plusOrMinus, handleMinusClick }) => {
   return (
     <Wrapper
-      onClick={handleMinusClick}
-      backgroundColor={plusOrMinus === "minus" ? "#000000" : "#ffffff"}
+      onClick={() => handleMinusClick()}
+      backgroundColor={plusOrMinus === 0 ? "#000000" : "#ffffff"}
     >
-      {plusOrMinus === "minus" ? <MinusImgWhite /> : <MinusImgGray />}
-      <Text color={plusOrMinus === "minus" ? "#ffffff" : "#b4b4b4"}>지출</Text>
+      {plusOrMinus === 0 ? <MinusImgWhite /> : <MinusImgGray />}
+      <Text color={plusOrMinus === 0 ? "#ffffff" : "#b4b4b4"}>지출</Text>
     </Wrapper>
   );
 };

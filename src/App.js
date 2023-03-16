@@ -34,7 +34,7 @@ function App() {
           <Route path="my-class" element={<MyClassPage />} />
           <Route path="my-student" element={<MyStudentPage />} />
           <Route path="my-classes-list" element={<MyClassesPage />} />
-          <Route path="bank-book" element={<StudentBankBookPage />} />
+          <Route path="bank-book/:idx" element={<StudentBankBookPage />} />
         </Routes>
       </Router>
     </>
