@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { GoBackButton } from "./pageHeaderIngredients";
+import { GoBackButton, LogoutButton } from "./pageHeaderIngredients";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -31,11 +31,12 @@ const RightButton = styled.span`
 
 const PageHeader = ({ pageTitle }) => {
   const leftButton = <GoBackButton />;
+  const rightButton = <LogoutButton />;
   return (
     <Wrapper>
       <LeftButton>{leftButton}</LeftButton>
       <PageTitle>{pageTitle}</PageTitle>
-      <RightButton></RightButton>
+      <RightButton>{rightButton}</RightButton>
     </Wrapper>
   );
 };

@@ -1,10 +1,9 @@
 import styled from "styled-components";
 import ExitButton from "./ExitButton.jsx";
-
 const Wrapper = styled.div`
   position: absolute;
   width: 100%;
-  height: 50%;
+  height: ${(props) => props.modalHeight};
   bottom: 0;
 
   background: #ffffff;
@@ -17,10 +16,17 @@ const StyledExitButton = styled(ExitButton)`
   right: 0;
 `;
 
-const BottomModal = () => {
+const BottomModal = ({
+  handleModalExit,
+  ModalContent,
+  modalHeight,
+  userName,
+  setShowModal,
+}) => {
   return (
-    <Wrapper>
-      <StyledExitButton />
+    <Wrapper modalHeight={modalHeight}>
+      <StyledExitButton handleModalExit={handleModalExit} />
+      <ModalContent userName={userName} setShowModal={setShowModal} />
     </Wrapper>
   );
 };

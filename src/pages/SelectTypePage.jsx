@@ -1,8 +1,11 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 import { layout } from "../styled/theme";
 import { BottomButton } from "../common";
+import { useResetRecoilState } from "recoil";
+import { studentJoinClassCode } from "../store";
 
 const Logo = styled.div`
   ${layout.flexCenter};
@@ -32,6 +35,15 @@ const SelectTypePage = () => {
     navigate("/teacher-join");
   };
 
+  const handleStudentBtnClick = () => {
+    navigate("/class-code");
+  };
+  const resetStudentClassCode = useResetRecoilState(studentJoinClassCode);
+  useEffect(() => {
+    resetStudentClassCode();
+    //eslint-disable-next-line
+  }, [studentJoinClassCode]);
+
   return (
     <Wrapper>
       <Logo>
@@ -40,7 +52,7 @@ const SelectTypePage = () => {
       </Logo>
       <>
         <BottomButton text={"교사"} onClick={handleTeacherBtnClick} />
-        <BottomButton text={"학생"} />
+        <BottomButton text={"학생"} onClick={handleStudentBtnClick} />
       </>
     </Wrapper>
   );

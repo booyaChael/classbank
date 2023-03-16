@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useUserRegister } from "../hooks";
 import styled from "styled-components";
 import { layout } from "../styled/theme";
 import { InputBox, BottomButton, PageHeader } from "../common";
@@ -6,7 +7,7 @@ import { InputBox, BottomButton, PageHeader } from "../common";
 const Logo = styled.div`
   ${layout.flexCenter};
   flex-direction: column;
-  margin-top: 30%;
+  margin-top: 10%;
   margin-bottom: 11px;
 `;
 const LogoText = styled.span`
@@ -34,11 +35,12 @@ const ErrorText = styled.span`
 `;
 
 const JoinPage = () => {
+  const { join } = useUserRegister();
   const [joinInputForm, setJoinInputForm] = useState({
-    userName: "",
-    userId: "",
-    password: "",
-    passwordAgain: "",
+    user_attendanceNumber: "0",
+    user_name: "",
+    user_id: "",
+    user_password: "",
   });
 
   const [errorText, setErrorText] = useState("");
@@ -50,11 +52,16 @@ const JoinPage = () => {
       [name]: value,
     });
   };
+  const handlePasswordConfirm = (e) => {
+    if (joinInputForm.user_password !== e.currentTarget.value) {
+      setErrorText("비밀번호와 비밀번호 확인이 일치하지 않습니다");
+    } else {
+      setErrorText("");
+    }
+  };
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (joinInputForm.password !== joinInputForm.passwordAgain) {
-      setErrorText("비밀번호와 비밀번호 확인이 일치하지 않습니다");
-    }
+    join(joinInputForm);
   };
   return (
     <>
@@ -65,28 +72,30 @@ const JoinPage = () => {
       </Logo>
       <Form onSubmit={handleSubmit}>
         <InputBox
-          inputName={"userName"}
+          inputName={"user_name"}
           text={"이름"}
           type={"text"}
           handleInputChange={handleInputChange}
         />
         <InputBox
-          inputName={"userId"}
+          inputName={"user_id"}
           text={"아이디"}
           type={"text"}
           handleInputChange={handleInputChange}
         />
         <InputBox
-          inputName={"password"}
+          inputName={"user_password"}
           text={"비밀번호"}
           type={"password"}
           handleInputChange={handleInputChange}
+          autoComplete="off"
         />
         <InputBox
-          inputName={"passwordAgain"}
+          inputName={"password_again"}
           text={"비밀번호 재입력"}
           type={"password"}
-          handleInputChange={handleInputChange}
+          handleInputChange={handlePasswordConfirm}
+          autoComplete="off"
         />
         <BottomButton type="submit" text={"회원가입"} marginTop={"20px"} />
         <ErrorText>{errorText}</ErrorText>
