@@ -58,13 +58,20 @@ const Money = styled.span`
   right: 100px;
 `;
 
-const HistoryBox = ({ amount, isPlus, detail, worker_name }) => {
+const HistoryBox = ({
+  amount,
+  isPlus,
+  detail,
+  userData,
+  worker_name,
+  type,
+}) => {
   const shortenedDetail =
     detail.length > 10 ? detail.slice(0, 10) + "..." : detail;
   return (
     <Wrapper>
       {isPlus === 1 ? <PlusImg /> : <MinusImg />}
-      <Name>{worker_name}</Name>
+      <Name>{type === "myClass" ? userData.user_name : worker_name}</Name>
       <Content>{shortenedDetail}</Content>
       <Money>{amount}진스</Money>
     </Wrapper>

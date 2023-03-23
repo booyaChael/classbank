@@ -31,7 +31,7 @@ const MyClassPage = () => {
       {history &&
         Array.isArray(history) &&
         history.map((his) => (
-          <HistoryBox key={his.history_account_id} {...his} />
+          <HistoryBox key={his.history_account_id} {...his} type={"myClass"} />
         ))}
     </>
   );
