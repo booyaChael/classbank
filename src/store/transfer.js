@@ -8,6 +8,7 @@ export const transfer = atom({
     detail: "",
     amount: null,
     category: "",
+    isPlus: null,
     worker_idx: null,
     worker_name: "",
     worker_attendanceNumber: "",
