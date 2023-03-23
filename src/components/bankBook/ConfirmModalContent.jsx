@@ -63,6 +63,13 @@ const PlusImg = styled.img.attrs({
   height: 90px;
   margin-right: 30px;
 `;
+const MinusImg = styled.img.attrs({
+  src: "../images/minus_button.png",
+})`
+  width: 90px;
+  height: 90px;
+  margin-right: 30px;
+`;
 const ConfirmModalContent = ({
   goBackToHandleMoney,
   userName,
@@ -84,7 +91,7 @@ const ConfirmModalContent = ({
       </TitleWrapper>
       <Content>
         <InputContent>
-          <PlusImg />
+          {transferDataRecoil.isPlus ? <PlusImg /> : <MinusImg />}
           <Money>{transferDataRecoil.amount}미소</Money>
         </InputContent>
 
